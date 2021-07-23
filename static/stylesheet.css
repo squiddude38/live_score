@@ -1,0 +1,489 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+
+
+}
+
+.display_score {
+    background-color: black;
+    color: white;
+    display: inline-block;
+
+    width: 100vw;
+
+
+}
+
+.home_team_scoreboard, .away_team_scoreboard{
+    display: block;
+    padding: 0px 20px;
+
+}
+
+.home_team_scoreboard{
+    float: left;
+    text-align: center;
+    margin-top: -15px;
+}
+.away_team_scoreboard{
+    float: right;
+    text-align: center;
+    margin-top: -15px;
+}
+ 
+.away_team_scoreboard h1, .home_team_scoreboard h1{
+    font-size: 60px;
+
+}
+
+.match_info {
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 25px;
+    text-align: center;
+
+}
+.match_info p:nth-child(2), .match_info p:nth-child(3) {
+    margin: 5px;
+    color: rgb(240, 240, 240);
+}
+
+
+.match_info p:nth-child(1){
+    font-size: 20px;
+    font-weight: bold;
+    
+}
+
+
+
+
+.time{
+    color: black;
+    display: inline-block;
+    width:100vw ;
+    
+}
+
+
+
+.start_stop{
+    display: block;
+    float: left;
+}
+
+.half-full_time{
+    display: block;
+    float: right;
+}
+
+.timer{
+
+    position: absolute;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 30px;
+
+}
+
+
+#half-full_time_button, #start-stop_button{
+    display: block;
+    border: none;
+    width: 35vw;
+    height: 70px;
+    padding: 8px 0px;
+    margin: 10px;
+    text-decoration: none;
+    background: rgb(249,249,249);
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: .1s ease-in-out;
+}
+
+.half-full_time_button:hover, .start-stop_button:hover, 
+.half-full_time_button:focus, .start-stop_button:focus{
+    background-color: rgb(240, 240, 240);
+}
+
+
+
+.input_goal{
+    height: 40vh;
+    width: 100vw;
+    display: inline-block;
+}
+
+.away_team_goal{
+    display: block;
+    float: right;
+
+}
+.home_team_goal{
+    display: block;
+    float: left;
+}
+
+#home_team_goal_button,#away_team_goal_button{
+    display: block;
+    border: none;
+    width: 41vw;
+    height: 50vh;
+    padding: 2px 0px;
+    margin: 10px;
+    text-decoration: none;
+    background: rgb(249,249,249);
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: .1s ease-in-out;
+}
+
+#home_team_goal_button ,
+#away_team_goal_button {
+    font-size: 20px;
+}
+
+#home_team_goal_button span,
+#away_team_goal_button span{
+    display: block;
+    font-size: 10px;
+    color: rgb(10, 10, 10);
+}
+
+.footer p{
+    position: absolute;
+    width: 100vw;
+    bottom: -20px;
+    height: 20px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    background-color: black;
+    color: white;
+    text-align: center;
+}
+
+
+
+/*----------------------------------------game select----------------------------------------*/
+
+
+#game_select_button{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(240, 240, 240);
+    text-align: center;
+    
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    color: rgb(150, 150, 150);
+}
+
+
+.select_popup ,.info_popup{
+    display: none;
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%) ;
+    transition: 200ms ease-in-out;
+    border: 1px solid black;
+    background-color: white;
+    z-index: 100;
+    width: 500px;
+    max-width: 80%;
+    min-height: 30%;
+
+}
+
+
+.popup_header{
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+.popup_header .popup_close{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+
+}
+.popup_body{
+    padding: 10px;
+}
+
+#overlay {
+    display: none;
+    position: fixed;
+    transition: 200ms ease-in-out;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0,0,0, .5);
+    pointer-events: none;
+}
+
+
+#submit_fixture{
+
+    display: block;
+    border: none;
+    width: 100%;
+    padding: 8px 0px;
+    margin: 0;
+    text-decoration: none;
+    background: rgb(240,240,240);
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: .1s ease-in-out;
+}
+    
+#submit_fixture:hover{
+    background-color: rgb(230,230,230);
+    }
+
+#fixure_select{
+
+    -webkit-appearance: none;
+    display: inline-block;
+    width: 100%;
+    padding: 8px 12px;
+    color: black;
+    border: none;
+    background-color: rgb(240,240,240);
+    border-radius:  0 ; 
+    cursor: pointer;
+    margin: 10px 0;
+    background-image: url('data:image/svg+xml;utf8, <svg xmlns="http://www.w3.org/2000/svg" width="100" height ="50"><polygon points="0,0 100,0 50,50" style="fill:%23666666;" /></svg>');
+    background-position: right 10px top 50%;
+    background-repeat: no-repeat;
+    background-size: 10px;
+    padding-right: 30px;
+    transition: .1s ease-in-out;
+ 
+}
+
+#fixure_select:hover,
+#fixure_select:focus {
+    background-color: rgb(230,230,230);
+}
+
+/*popup css*/
+
+.popup_header_fulltime {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
+}
+
+.popup_header_fulltime p{
+    font-size: 20px;
+    text-align: center;
+}
+
+.popup_header_fulltime .popup_close{
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+    font-size: 1.25rem;
+
+
+}
+
+/*select header*/
+.game_select_header{
+    position: fixed;
+    background-color: black;
+    width: 100vw;
+    padding:10px;
+    color: white;
+
+}
+
+.game_select_header img{
+    width: 50px;
+}
+
+
+.game_select_header a{
+    vertical-align: center;
+    appearance: button;
+    border: none;
+    padding: 8px 20px ;
+    margin: 0;
+    text-decoration: none;
+    background: red;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: .1s ease-in-out;
+    float: right;
+    margin-right: 20px;
+    margin-top: 25px;
+    transform: translateY(-50%);
+}
+
+
+
+
+
+/*-------------------------------------------- game viewer page --------------------------------------------  */
+
+.game_viewer_header{
+    background-color: black;
+    width: 100vw;
+    padding:0px;
+    color: white;
+    padding: 10px 0px;
+}
+
+.game_viewer_header img{
+    width: 50px;
+    padding-left: 10px;
+}
+
+
+.game_viewer_header a{
+    vertical-align: center;
+    appearance: button;
+    border: none;
+    padding: 8px 15px ;
+    margin: 0;
+    text-decoration: none;
+    background: red;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    transition: .1s ease-in-out;
+    float: right;
+    margin-right: 20px;
+    margin-top: 25px;
+    transform: translateY(-50%);
+}
+
+.game{    
+    background-color: rgb(249,249,249);
+    height: 100px;
+    padding: 10px 0;
+    margin: 15px 0px;
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.teams {
+    padding: 0px 10px;
+}
+
+.teams p {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 5px 0;
+    width: 65vw;
+}
+
+.teams hr{
+    margin-left: 10px;
+    margin-right: 40vw;
+    width: 100%;
+    border-width: 0;
+    height: 1px;
+    background-color: rgb(240,240,240);
+}
+
+.game_team1 span{
+    display: block;
+}
+
+.game_team2{
+    display: block;
+}
+
+.score{
+    float: right;
+    width: 30vw;
+}
+.score hr{
+    width: 1px;
+    height: 80px;
+    border-width: 0;
+    background-color: rgb(240,240,240);
+    margin-right: 150px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.score p {
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 5px 0;
+    text-align: center;
+}
+.game_score1,
+.game_score2 {
+    display: block;
+}
+
+.scores{
+    padding-top: 5px;
+}
+
+.game_inform{
+    display: flex;
+    max-width: 60vw ;
+    justify-content: space-between;
+
+}
+
+
+.game_inform #more_game_info{
+    transform: translateX(20px) ;
+    cursor: pointer;
+    padding: 5px;
+}
+
+
+
+
+
+@media only screen and (max-width: 490px) {
+    .game_time{ 
+        transform: translateY(-10px);}
+    
+    .unfinished_game .game_score1,
+    .unfinished_game span {
+        transform: translateY(-20px);
+    }
+    .game_time span{
+        display: block;
+    }
+  }

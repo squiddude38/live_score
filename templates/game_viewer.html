@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>game viewer</title>
+    <link rel="stylesheet" href="../static/stylesheet.css">
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+    <script >
+        let game_num = 0;
+        '{%for game in games%}'
+            game_num ++;
+        '{%endfor%}'
+    </script>
+
+
+
+    <header class="game_viewer_header">
+        <img src="../static/imgs/mainland_football_logo.png" alt="mainland_football_logo"> 
+        <a href="/game_select">live score</a>
+    </header>
+
+    <section>
+        {%for game in games%}
+            <div id="game-{{game[0]}} "class='game' >
+                <div class="teams">
+                    <div class="game_inform">
+                        <p class="game_comp">{{game[1]}}</p> 
+                    </div>
+                    <hr>
+                    <p   class="game_team1">{{game[2]}} <span>vs</span> <span  class="game_team2">{{game[3]}}</span></p>
+                </div>
+                <hr>
+                <div class="score-wrapper">
+                    <div class="score">  
+                        {%if game[10] >= 90 %}
+                            <p class="game_time" id='game-time{{game[0]}}'>F.T</p>
+                            <div class="scores">
+                                <p><span id='home-score{{game[0]}}' class='game_score1'>{{game[8]}}</span> <br><span id='away-score{{game[0]}}' class="game_score2">{{game[9]}}</span></p>
+                            </div>
+                        {%elif game[10] > 0%}
+                            <p class="game_time" id='game-time{{game[0]}}'>{{game[10]}}'</p>
+                            <div class="scores">
+                                <p class='unfinished_game'><span id='home-score{{game[0]}}' class='game_score1'>{{game[8]}}</span> <br><span id='away-score{{game[0]}}' class="game_score2">{{game[9]}}</span></p>
+                            </div>
+        
+                        {%else%}
+                            <p class="game_time" id='game-time{{game[0]}}'> {{game[4]}}, <span>{{game[5]}}</span></p>
+                            <div class="scores">
+                                <p class='unfinished_game'><span id='home-score{{game[0]}}' class='game_score1'>{{game[8]}}</span> <br><span id='away-score{{game[0]}}' class="game_score2">{{game[9]}}</span></p>
+                            </div>
+                        {%endif%}
+
+                    </div>
+                </div>
+            </div>
+        {%endfor%}
+
+
+
+    </section>
+  
+
+    <div id='overlay'></div>
+    <script src="static/javascript/game_viewer.js"></script>
+
+</body>
+</html>

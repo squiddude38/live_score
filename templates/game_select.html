@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game_select</title>
+    <link rel="stylesheet" href="../static/stylesheet.css">
+</head>
+<body>
+    <div id='select_match'>
+        <header class="game_select_header">
+            <img src="../static/imgs/mainland_football_logo.png" alt="mainland_football_logo"> 
+            <a href="/">home</a>
+        </header>
+        <section>
+            <div id='game_select_button'>
+                click to start tracking a match
+            </div>
+
+
+
+            <div class="select_popup" id="select_popup">
+                <div class="popup_header">
+                    please select a game
+                    <button id="popup_close"  class="popup_close">&times;</button>
+                </div>
+                <div class="popup_body">
+                    <form method="POST"  >
+                        <select name="fixure_select" id="fixure_select">
+                            <option value="null" selected></option>
+                            {%for game in fixures%}
+                                <option value="{{game[0]}}">{{game[1]}} - {{game[2]}} vs {{game[3]}} ({{game[5]}})</option>
+                            {%endfor%}
+                        </select>
+            
+                        <button  type="submit" id="submit_fixture"  >Start match</button>
+                        
+                    </form>
+                </div>
+
+
+            </div>
+
+        <div id='overlay'></div>
+
+        </section>
+        <script src="static/javascript/game_select.js"></script>
+    </div>
+
+</body>
+</html>
